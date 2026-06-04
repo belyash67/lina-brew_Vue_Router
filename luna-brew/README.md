@@ -1,32 +1,32 @@
 # LUNA BREW — кофейня по лунному календарю
 
-Демонстрационный лендинг кофейни, где каждый напиток подбирается по текущей фазе луны. Проект построен на **Vue 3** и **Vuetify 4** ([документация](https://vuetifyjs.com/en/getting-started/installation/#installation)).
+Демонстрационный SPA о кофейне, где напитки подбираются по фазе луны. Проект доработан под задание курса [Vue Router 4 for Everyone](https://vueschool.io/courses/vue-router-4-for-everyone) (Vue School).
 
-## Используемые компоненты Vuetify
+## Vue Router
 
-| Компонент | Где используется |
-|-----------|------------------|
-| `v-app`, `v-main` | Каркас приложения |
-| `v-app-bar`, `v-navigation-drawer` | Шапка и мобильное меню |
-| `v-chip` | Бейджи фаз луны, подзаголовки секций |
-| `v-card`, `v-img`, `v-list` | Карточки меню и происхождения зерна |
-| `v-tabs`, `v-tabs-window` | Переключение категорий меню |
-| `v-stepper` | Блок «Как мы варим» — 4 шага процесса |
-| `v-dialog`, `v-text-field`, `v-textarea` | Форма бронирования стола |
-| `v-snackbar` | Уведомление об успешном бронировании |
-| `v-footer`, `v-container`, `v-row`, `v-col` | Вёрстка и подвал |
-| `v-btn` | Кнопки по всему сайту |
-| `v-divider` | Разделители в подвале и меню |
+| Возможность | Реализация в проекте |
+|-------------|----------------------|
+| Маршруты и `router-view` | Отдельные страницы: главная, концепция, меню, процесс, происхождение, подписка |
+| Именованные маршруты | `home`, `concept`, `menu-category`, `drink-detail`, … |
+| Динамические параметры | `/menu/:category`, `/menu/:category/:slug` |
+| Вложенные маршруты | `MenuLayout` → список категории и карточка напитка |
+| Навигационные хуки | `beforeEnter` проверяет корректность категории |
+| Lazy loading | `() => import('../views/...')` для code-splitting |
+| `scrollBehavior` | Прокрутка вверх при смене страницы |
+| `meta` + `afterEach` | Заголовок вкладки браузера |
 
-## Секции сайта
+Примеры URL:
 
-- **Hero** — главный экран с анимацией луны и звёзд + полоса фаз
-- **Концепция** — философия лунного кофе
-- **Меню** — 4 категории напитков с табами (Vuetify v-tabs)
-- **Как мы варим** — 4-шаговый процесс (Vuetify v-stepper)
-- **Происхождение** — зерно из Эфиопии, Йемена и Колумбии
-- **Подписка** — ежемесячная доставка в новолуние
-- **Подвал** — контакты и навигация
+- `/` — главная
+- `/menu/espresso` — эспрессо
+- `/menu/espresso/lunnyj-espresso` — карточка напитка
+- `/concept`, `/how`, `/origins`, `/subscription`
+
+## Стек
+
+- Vue 3 + Vue Router 4
+- Vuetify 4
+- Vite
 
 ## Запуск
 
@@ -35,8 +35,6 @@ npm install
 npm run dev
 ```
 
-Откройте адрес из терминала (обычно http://localhost:5173).
-
 ## Сборка
 
 ```bash
@@ -44,10 +42,6 @@ npm run build
 npm run preview
 ```
 
-## Стек
+## Курс
 
-- Vue 3
-- Vuetify 4
-- Vite
-- Material Design Icons (@mdi/font)
-- Google Fonts: Playfair Display, DM Sans, DM Mono
+Vue School: https://vueschool.io/courses/vue-router-4-for-everyone
