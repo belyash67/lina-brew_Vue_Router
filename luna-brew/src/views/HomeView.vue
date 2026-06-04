@@ -38,15 +38,19 @@
         >
           Забронировать стол
         </v-btn>
-        <v-btn
+        <router-link
           :to="{ name: 'menu-category', params: { category: 'espresso' } }"
-          variant="text"
-          color="accent"
-          size="large"
-          append-icon="mdi-arrow-down"
+          class="text-decoration-none"
         >
-          Смотреть меню
-        </v-btn>
+          <v-btn
+            variant="text"
+            color="accent"
+            size="large"
+            append-icon="mdi-arrow-down"
+          >
+            Смотреть меню
+          </v-btn>
+        </router-link>
       </div>
       <div class="hero-stats">
         <div v-for="stat in stats" :key="stat.label" class="stat-item">

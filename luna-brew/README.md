@@ -28,12 +28,23 @@
 - Vuetify 4
 - Vite
 
-## Запуск
+## Запуск локально
 
 ```bash
+cd luna-brew
 npm install
 npm run dev
 ```
+
+Откройте адрес из терминала (часто http://localhost:5173). Если порт занят, Vite предложит другой (например 5174).
+
+## Сайт в интернете (GitHub Pages)
+
+После включения Pages в настройках репозитория сайт доступен по адресу:
+
+**https://belyash67.github.io/luna-brew/**
+
+> Ссылка на GitHub (`github.com/.../luna-brew`) — это репозиторий с кодом, а не сам сайт.
 
 ## Сборка
 

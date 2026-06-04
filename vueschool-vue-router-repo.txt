@@ -3,3 +3,6 @@
 
 Ссылка на публичный репозиторий GitHub:
 https://github.com/belyash67/luna-brew
+
+Сайт (GitHub Pages):
+https://belyash67.github.io/luna-brew/

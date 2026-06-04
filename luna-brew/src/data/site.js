@@ -1,7 +1,7 @@
 export const navItems = [
   { label: 'Главная', to: { name: 'home' }, icon: 'mdi-home' },
   { label: 'Концепция', to: { name: 'concept' }, icon: 'mdi-moon-waning-crescent' },
-  { label: 'Меню', to: { name: 'menu', params: { category: 'espresso' } }, icon: 'mdi-coffee' },
+  { label: 'Меню', to: { name: 'menu-category', params: { category: 'espresso' } }, icon: 'mdi-coffee' },
   { label: 'Процесс', to: { name: 'how' }, icon: 'mdi-information' },
   { label: 'Происхождение', to: { name: 'origins' }, icon: 'mdi-earth' },
   { label: 'Подписка', to: { name: 'subscription' }, icon: 'mdi-package-variant' },

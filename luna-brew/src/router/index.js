@@ -23,7 +23,9 @@ const router = createRouter({
     },
     {
       path: '/menu',
+      name: 'menu',
       component: () => import('../views/MenuLayout.vue'),
+      meta: { title: 'Меню' },
       children: [
         {
           path: '',
@@ -83,8 +85,8 @@ const router = createRouter({
 })
 
 router.afterEach((to) => {
-  const page = to.meta.title ? `${to.meta.title} · ` : ''
-  document.title = `${page}LUNA BREW`
+  const title = to.matched.map((r) => r.meta.title).filter(Boolean).pop()
+  document.title = title ? `${title} · LUNA BREW` : 'LUNA BREW'
 })
 
 export default router
