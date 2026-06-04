@@ -41,7 +41,7 @@
         <router-link :to="{ name: 'home' }" class="app-bar-logo">LUNA BREW</router-link>
       </v-app-bar-title>
       <template #append>
-        <div class="d-none d-md-flex align-center ga-1 mr-4">
+        <div class="d-none d-md-flex align-center ga-1 mr-2">
           <v-btn
             v-for="item in navItems"
             :key="item.label"
@@ -55,6 +55,27 @@
             {{ item.label }}
           </v-btn>
         </div>
+
+        <v-btn icon variant="text" color="primary" class="mr-1" @click="openCart">
+          <v-badge v-if="cartCount" :content="cartCount" color="primary">
+            <v-icon>mdi-cart-outline</v-icon>
+          </v-badge>
+          <v-icon v-else>mdi-cart-outline</v-icon>
+        </v-btn>
+
+        <v-btn
+          :to="{ name: 'favorites' }"
+          icon
+          variant="text"
+          color="primary"
+          class="mr-1"
+        >
+          <v-badge v-if="favoritesCount" :content="favoritesCount" color="secondary">
+            <v-icon>mdi-heart-outline</v-icon>
+          </v-badge>
+          <v-icon v-else>mdi-heart-outline</v-icon>
+        </v-btn>
+
         <v-btn
           color="primary"
           variant="outlined"
@@ -72,21 +93,34 @@
       <SiteFooter />
     </v-main>
 
+    <CartDrawer />
     <OrderDialog />
   </v-app>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useStore } from 'vuex'
 import { navItems } from './data/site.js'
-import { provideOrder } from './composables/useOrder.js'
+import CartDrawer from './components/CartDrawer.vue'
 import OrderDialog from './components/OrderDialog.vue'
 import SiteFooter from './components/SiteFooter.vue'
 
-const { openOrder } = provideOrder()
+const store = useStore()
 
 const drawer = ref(false)
 const scrolled = ref(false)
+
+const cartCount = computed(() => store.getters['cart/itemCount'])
+const favoritesCount = computed(() => store.getters['favorites/count'])
+
+function openOrder() {
+  store.dispatch('booking/openOrder')
+}
+
+function openCart() {
+  store.dispatch('cart/openDrawer')
+}
 
 function onScroll() {
   scrolled.value = window.scrollY > 40

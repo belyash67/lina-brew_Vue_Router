@@ -43,7 +43,11 @@
 
 <script setup>
 import { subPerks } from '../data/site.js'
-import { useOrder } from '../composables/useOrder.js'
+import { useStore } from 'vuex'
 
-const { openOrder } = useOrder()
+const store = useStore()
+
+function openOrder() {
+  store.dispatch('booking/openOrder')
+}
 </script>

@@ -99,12 +99,25 @@ body {
 
 .menu-tabs { border-bottom: 1px solid rgba(200, 169, 110, 0.1); }
 
-.menu-card {
+.menu-card,
+.menu-card-link {
   height: 100%;
   border: 1px solid rgba(200, 169, 110, 0.08) !important;
   transition: border-color 0.3s, transform 0.2s;
   text-decoration: none;
   display: block;
+  color: inherit;
+}
+
+.menu-card-link:hover {
+  border-color: rgba(200, 169, 110, 0.25) !important;
+}
+
+.phase-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
   color: inherit;
 }
 

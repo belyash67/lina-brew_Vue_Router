@@ -4,7 +4,7 @@
       <div class="section-header">
         <v-chip color="primary" variant="tonal" size="small" class="mb-4">меню</v-chip>
         <h2 class="section-title">Напитки фазы</h2>
-        <p class="section-sub">Сегодня: <strong>Растущая луна 🌒</strong> — время насыщенных вкусов</p>
+        <p class="section-sub">{{ menuSubtitle }}</p>
       </div>
 
       <v-tabs
@@ -32,10 +32,14 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { menuCategories } from '../data/menu.js'
 
 const route = useRoute()
 const router = useRouter()
+const store = useStore()
+
+const menuSubtitle = computed(() => store.getters['moon/menuSubtitle'])
 
 const tabLabels = {
   espresso: 'Эспрессо',

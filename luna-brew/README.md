@@ -1,6 +1,17 @@
 # LUNA BREW — кофейня по лунному календарю
 
-Демонстрационный SPA о кофейне, где напитки подбираются по фазе луны. Проект доработан под задание курса [Vue Router 4 for Everyone](https://vueschool.io/courses/vue-router-4-for-everyone) (Vue School).
+Демонстрационный SPA о кофейне, где напитки подбираются по фазе луны. Проект использует **Vue Router** и **Vuex** (курсы Vue School).
+
+## Vuex
+
+| Модуль | Назначение |
+|--------|------------|
+| `cart` | Корзина: добавление, количество, итог, боковая панель |
+| `favorites` | Избранные напитки + сохранение в `localStorage` (plugin) |
+| `moon` | Текущая фаза луны (state / getters / actions) |
+| `booking` | Форма бронирования стола (диалог и отправка) |
+
+Все модули **namespaced** с `state`, `getters`, `mutations`, `actions`.
 
 ## Vue Router
 
@@ -24,7 +35,7 @@
 
 ## Стек
 
-- Vue 3 + Vue Router 4
+- Vue 3 + Vue Router 4 + Vuex 4
 - Vuetify 4
 - Vite
 
@@ -53,6 +64,7 @@ npm run build
 npm run preview
 ```
 
-## Курс
+## Курсы Vue School
 
-Vue School: https://vueschool.io/courses/vue-router-4-for-everyone
+- Vue Router: https://vueschool.io/courses/vue-router-4-for-everyone
+- Vuex: https://vueschool.io/courses/vuex-for-everyone

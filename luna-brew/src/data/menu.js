@@ -39,10 +39,29 @@ export const menuCategories = [
 
 export const categoryIds = menuCategories.map((c) => c.id)
 
+export function drinkId(categoryId, slug) {
+  return `${categoryId}/${slug}`
+}
+
+export function withDrinkMeta(categoryId, item) {
+  return {
+    ...item,
+    category: categoryId,
+    id: drinkId(categoryId, item.slug),
+  }
+}
+
+export function getAllDrinks() {
+  return menuCategories.flatMap((cat) =>
+    cat.items.map((item) => withDrinkMeta(cat.id, item)),
+  )
+}
+
 export function findDrink(categoryId, slug) {
   const category = menuCategories.find((c) => c.id === categoryId)
   if (!category) return null
-  return category.items.find((item) => item.slug === slug) ?? null
+  const item = category.items.find((i) => i.slug === slug)
+  return item ? withDrinkMeta(categoryId, item) : null
 }
 
 export function findDrinkBySlug(slug) {

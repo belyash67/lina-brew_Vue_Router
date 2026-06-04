@@ -17,7 +17,7 @@
         class="mb-6"
         prepend-icon="mdi-moon-waning-crescent"
       >
-        Новолуние — идеальный день для эспрессо
+        {{ currentPhase.name }} — {{ currentPhase.hint }}
       </v-chip>
       <h1 class="hero-title">
         Кофе,<br />
@@ -60,22 +60,36 @@
       </div>
     </v-container>
     <div class="moon-phase-bar">
-      <div
+      <button
         v-for="phase in moonPhases"
-        :key="phase.name"
-        class="phase-item"
+        :key="phase.key"
+        type="button"
+        class="phase-item phase-btn"
         :class="{ active: phase.active }"
+        @click="setPhase(phase.key)"
       >
         <span class="phase-icon">{{ phase.icon }}</span>
         <span class="phase-name">{{ phase.name }}</span>
-      </div>
+      </button>
     </div>
   </section>
 </template>
 
 <script setup>
-import { stats, moonPhases } from '../data/site.js'
-import { useOrder } from '../composables/useOrder.js'
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { stats } from '../data/site.js'
 
-const { openOrder } = useOrder()
+const store = useStore()
+
+const currentPhase = computed(() => store.getters['moon/currentPhase'])
+const moonPhases = computed(() => store.getters['moon/phasesWithActive'])
+
+function openOrder() {
+  store.dispatch('booking/openOrder')
+}
+
+function setPhase(key) {
+  store.dispatch('moon/setPhase', key)
+}
 </script>
